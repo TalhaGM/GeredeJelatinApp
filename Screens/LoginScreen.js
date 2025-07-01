@@ -1,7 +1,7 @@
 import React, { useState, useRef } from 'react';
 import {View,Text,TextInput,TouchableOpacity,StyleSheet,Animated,KeyboardAvoidingView,Platform,Image,} from'react-native';
 import { LinearGradient } from 'expo-linear-gradient';
-import { MaterialCommunityIcons } from '@expo/vector-icons';  // Correct Expo import
+import { MaterialCommunityIcons } from '@expo/vector-icons';  
 
 export default function UniqueLogin() {
   const [email, setEmail] = useState('');
@@ -32,7 +32,7 @@ export default function UniqueLogin() {
     }),
     color: emailLabelAnim.interpolate({
       inputRange: [0, 1],
-      outputRange: ['#aaa', '#4e8cff'],
+      outputRange: ['#aaa', '#7CB342'],
     }),
     backgroundColor: '#fff',
     paddingHorizontal: 4,
@@ -51,7 +51,7 @@ export default function UniqueLogin() {
     }),
     color: passwordLabelAnim.interpolate({
       inputRange: [0, 1],
-      outputRange: ['#aaa', '#4e8cff'],
+      outputRange: ['#aaa', '#7CB342'],
     }),
     backgroundColor: '#fff',
     paddingHorizontal: 4,
@@ -76,7 +76,7 @@ export default function UniqueLogin() {
   };
 
   return (
-    <LinearGradient colors={['#4CAF50', '#81C784']} style={styles.container}>
+    <LinearGradient colors={['#d3e7a7', '#81C784']} style={styles.container}>
       <KeyboardAvoidingView
         behavior={Platform.OS === 'ios' ? 'padding' : undefined}
         style={styles.innerContainer}
@@ -157,14 +157,15 @@ const styles = StyleSheet.create({
     alignItems:'center',
   },
   logo: {
-    width: 180,
-    height: 140,
+    width: 120,
+    height: 120,
     marginBottom: 0,
+    marginTop: 0,
   },
   title: {
-    fontSize: 36,
+    fontSize: 30,
     fontWeight: '700',
-    color: '#F9F9F9',
+    color: '#FFFF',
     marginBottom: 6,
     textAlign: 'center',
   },
@@ -175,18 +176,18 @@ const styles = StyleSheet.create({
     textAlign: 'center',
   },
   inputWrapper: {
-    marginBottom: 30,
+    marginBottom:25,
     position: 'relative',
   },
   input: {
     height: 48,
     borderWidth: 1.5,
-    borderColor: '#8fce00',
+    borderColor: '#558B2F',
     borderRadius: 12,
     paddingLeft: 40,
     paddingRight: 40,
     fontSize: 16,
-    color: '#333',
+    color: '#333333',
     backgroundColor: '#fff',
   },
   icon: {
@@ -208,13 +209,13 @@ const styles = StyleSheet.create({
     width: '100%',
   },
   button: {
-    backgroundColor: '#fff',
+    backgroundColor: '#558B2F',
     paddingVertical: 14,
-    borderRadius: 14,
+    borderRadius: 5,
     alignItems: 'center',
   },
   buttonText: {
-    color: '#8fce00',
+    color: '#fff',
     fontWeight: '700',
     fontSize: 18,
   },
@@ -222,7 +223,6 @@ const styles = StyleSheet.create({
     color: '#fff',
     fontWeight: '600',
     textAlign: 'center',
-    textDecorationLine: 'underline',
+    textDecorationLine: 'line',
   },
 });
-
