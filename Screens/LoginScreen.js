@@ -2,11 +2,36 @@ import React, { useState, useRef } from 'react';
 import {View,Text,TextInput,TouchableOpacity,StyleSheet,Animated,KeyboardAvoidingView,Platform,Image,} from'react-native';
 import { LinearGradient } from 'expo-linear-gradient';
 import { MaterialCommunityIcons } from '@expo/vector-icons';  
+import auth from '@react-native-firebase/auth';
 
 export default function UniqueLogin() {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const [secureText, setSecureText] = useState(true);
+
+  const handleSignUp = () => {
+    if (!email || !password) {
+      Alert.alert('Hata', 'Email ve şifre giriniz.');
+      return;
+    }
+
+    auth()
+      .createUserWithEmailAndPassword(email, password)
+      .then(() => {
+        Alert.alert('Başarılı', 'Kullanıcı oluşturuldu!');
+      })
+      .catch(error => {
+        if (error.code === 'auth/email-already-in-use') {
+          Alert.alert('Hata', 'Bu email zaten kullanılıyor.');
+        } else if (error.code === 'auth/invalid-email') {
+          Alert.alert('Hata', 'Geçersiz email adresi.');
+        } else if (error.code === 'auth/weak-password') {
+          Alert.alert('Hata', 'Şifre çok zayıf.');
+        } else {
+          Alert.alert('Hata', error.message);
+        }
+      });
+  };
 
   const emailLabelAnim = useRef(new Animated.Value(email ? 1 : 0)).current;
   const passwordLabelAnim = useRef(new Animated.Value(password ? 1 : 0)).current;
